@@ -11,3 +11,9 @@ jobs:
       # Example using the Firefox add-on action shown in image
       - name: Publish Firefox Add-on
         uses: wdzeng/firefox-addon@v1.1.2
+        with:
+          addon-guid: '{eba0e2c4-820d-4bd4-a972-3cb8cc90550f}'
+          xpi-path: '*.zip'
+          self-hosted: false
+          jwt-issuer: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          jwt-secret: ${{ secrets.FIREFOX_JWT_SECRET }}
