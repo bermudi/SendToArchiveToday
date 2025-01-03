@@ -1,19 +1,20 @@
-name: Publish Add-on
-on: [push]  # Defines when the workflow runs
+name: Build and Publish Add-on
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Using a marketplace action
-      - uses: actions/checkout@v3  # Common action to checkout code
+      - uses: actions/checkout@v3
       
-      # Example using the Firefox add-on action shown in image
+      - name: Create XPI
+        run: zip -r extension.xpi manifest.json background.js favicon.ico
+      
       - name: Publish Firefox Add-on
         uses: wdzeng/firefox-addon@v1.1.2
         with:
           addon-guid: '{eba0e2c4-820d-4bd4-a972-3cb8cc90550f}'
-          xpi-path: '*.zip'
+          xpi-path: 'extension.xpi'
           self-hosted: false
           jwt-issuer: ${{ secrets.FIREFOX_JWT_ISSUER }}
           jwt-secret: ${{ secrets.FIREFOX_JWT_SECRET }}
