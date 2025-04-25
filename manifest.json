@@ -1,11 +1,12 @@
 {
   "manifest_version": 2,
   "name": "Archive.today Saver",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Save current page to archive.today",
   "permissions": [
     "activeTab",
-    "https://archive.today/*"
+    "https://archive.today/*",
+    "https://archive.ph/*"
   ],
   "browser_action": {
     "default_icon": {
